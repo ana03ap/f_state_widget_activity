@@ -14,6 +14,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  double value = 0;
   // para obtener un valor con un solo decimal, correctamente redondeado
   // y asignarlo a un string, se puede usar:
   // double.parse(_value.toStringAsFixed(1));
@@ -31,7 +32,12 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    
+                    setState(() {
+                      value = 0;
+                    });
+                  },
                   icon: const Icon(Icons.refresh),
                   key: const Key('Refresh')),
             ],
@@ -39,11 +45,45 @@ class _MyHomePageState extends State<MyHomePage> {
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[W1(), W2(), W3()],
+              children: <Widget>[W1(value: value, suma : suma, resta: resta), W2(value: value), W3(value: value, suma : suma2, resta: resta2)],
             ),
           ),
         ],
       )),
     );
   }
+
+
+
+  void suma() {
+
+  setState(() {
+    value = value+1;
+  });
 }
+
+ void suma2() {
+  setState(() {
+    value +=0.1;
+  });
+}
+
+
+ void resta() {
+  setState(() {
+    value -=1;
+  });
+}
+
+
+ void resta2() {
+  setState(() {
+    value -=0.1;
+  });
+}
+
+
+
+
+}
+
